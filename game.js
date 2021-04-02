@@ -14,15 +14,16 @@ $(document).keypress(function () {
 });
 
 $(".btn").click(function (event) {
+  playSound(userChosenColour);
   var userChosenColour = this.id;
   userClickedPattern.push(userChosenColour);
-  playSound(userChosenColour);
   animatePress(userChosenColour);
   checkAnswer(userClickedPattern.length-1);
 });
 
 function nextSequence() {
 
+  playSound(randomChosenColour);
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
@@ -31,7 +32,6 @@ function nextSequence() {
   $("#level-title").text("Level " + level);
 
   $("#"+randomChosenColour).fadeOut(100).fadeIn(100)
-  playSound(randomChosenColour);
 
   userClickedPattern = [];
 }
